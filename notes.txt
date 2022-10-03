@@ -1,0 +1,31 @@
+ 
+Un deck Damier Commun , A1 a J10
+
+un deck en plus par joueur par joueur avec les cartes de damier,
+chaue joueur bouge an choisissant avec son deck joueur son prochain mouvement.
+
+A chaque tour on abat sa carte pour voir, ou l'on est.
+
+L'on demarre la partie avec des pions 10 pions.
+
+A chaque fois, on peut depenser pour scouter la case d'a coté. taper sur la case d'a coté , fouiller la case d'a coté, fouiller longuement la case d'a coté.
+
+
+4 deck, un deck commun de case, un deck d'object , un deck de lieu et un deck d'objets.
+
+La partie commence le joueur pioche une carte dans son deck de lieu,
+
+ensuite il annonce ce qu'il fait, si il scoute ou il attaque une case a coté de lui.
+
+Si il scoute une case il voir le type batiment sur la case, il peut ensuite aller fouiller ou scouter le batiment (voir si joueur).
+il peut aussi fouiller longuement le batiment. Mais il reste sur sa case (on ne sait pas laquelle).
+
+Il pioche des equipement qu'il garde caché.
+
+Ensuite il fait son mouvement.
+
+Arme de corps a corps tape a +1 case, arme a distance tape a +2 cases.
+
+Force differente et armure.
+
+L'on montre sa carte mouvement de deux tours précédents.
