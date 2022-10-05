@@ -2,16 +2,40 @@ import json
 import joblib
 
 
-def in_circle(center_x, center_y, radius, x, y):
+def in_circle_equal(center_x, center_y, radius, x, y):
     square_dist = (center_x - x) ** 2 + (center_y - y) ** 2
     return square_dist <= radius ** 2
 
-def calculate_outside_circle(circle_x,circle_y,circle_r,positions,key1):
+def in_circle_not_equal(center_x, center_y, radius, x, y):
+    square_dist = (center_x - x) ** 2 + (center_y - y) ** 2
+    return square_dist <= radius ** 2
+
+def out_circle_equal(center_x, center_y, radius, x, y):
+    square_dist = (center_x - x) ** 2 + (center_y - y) ** 2
+    return square_dist > radius ** 2
+
+def out_circle_not_equal(center_x, center_y, radius, x, y):
+    square_dist = (center_x - x) ** 2 + (center_y - y) ** 2
+    return square_dist >= radius ** 2
+
+
+def calculate_outside_circle_equal(circle_x,circle_y,circle_r,positions,key1):
     result = []
     positions2 = positions.copy()
     #del positions2[key1]
     for pos in positions2.keys():
-        if (positions2[pos][0]-circle_x)**2 + (positions2[pos][1]-circle_y)**2 > circle_r**2:
+        if out_circle_equal(circle_x,circle_y,circle_r,positions2[pos][0],positions2[pos][1]):
+            result.append(pos)
+    #for key in result:
+        #del positions2[key]
+    return result,positions2
+
+def calculate_outside_circle_not_equal(circle_x,circle_y,circle_r,positions,key1):
+    result = []
+    positions2 = positions.copy()
+    #del positions2[key1]
+    for pos in positions2.keys():
+        if out_circle_not_equal(circle_x,circle_y,circle_r,positions2[pos][0],positions2[pos][1]):
             result.append(pos)
     #for key in result:
         #del positions2[key]
@@ -19,19 +43,19 @@ def calculate_outside_circle(circle_x,circle_y,circle_r,positions,key1):
 
 
 
-def clean_turn(result_br,key):
-    result_br[key]["clean_turn_2"] = list(set(result_br[key]["result_turn_2"])-set(result_br[key]["result_turn_1"]))
-    result_br[key]["clean_turn_2"].sort()
-    result_br[key]["clean_turn_3"] = list(set(result_br[key]["result_turn_3"])-set(result_br[key]["clean_turn_2"])-set(result_br[key]["result_turn_1"]))
-    result_br[key]["clean_turn_3"].sort()
-    result_br[key]["clean_turn_4"] = list(set(result_br[key]["result_turn_4"])-set(result_br[key]["clean_turn_3"])-set(result_br[key]["clean_turn_2"])-set(result_br[key]["result_turn_1"]))
-    result_br[key]["clean_turn_4"].sort()
-    result_br[key]["clean_turn_5"] =  list(set(result_br[key]["result_turn_5"]) - set(result_br[key]["clean_turn_4"])-set(result_br[key]["clean_turn_3"])-set(result_br[key]["clean_turn_2"])-set(result_br[key]["result_turn_1"]))
-    result_br[key]["clean_turn_5"].sort()
-    result_br[key]["clean_turn_6"] =  list(set(result_br[key]["result_turn_6"]) - set(result_br[key]["clean_turn_5"])- set(result_br[key]["clean_turn_4"])-set(result_br[key]["clean_turn_3"])-set(result_br[key]["clean_turn_2"])-set(result_br[key]["result_turn_1"]))
-    result_br[key]["clean_turn_6"].sort()
-    result_br[key]["clean_turn_7"] =  list(set(result_br[key]["result_turn_7"]) - set(result_br[key]["clean_turn_6"])- set(result_br[key]["clean_turn_5"])- set(result_br[key]["clean_turn_4"])-set(result_br[key]["clean_turn_3"])-set(result_br[key]["clean_turn_2"])-set(result_br[key]["result_turn_1"]))
-    result_br[key]["clean_turn_7"].sort()
+def clean_turn(result_br,key,type_cirle="_not_equal"):
+    result_br[key]["clean_turn_2"+type_cirle] = list(set(result_br[key]["result_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_2"+type_cirle].sort()
+    result_br[key]["clean_turn_3"+type_cirle] = list(set(result_br[key]["result_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_3"+type_cirle].sort()
+    result_br[key]["clean_turn_4"+type_cirle] = list(set(result_br[key]["result_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_4"+type_cirle].sort()
+    result_br[key]["clean_turn_5"+type_cirle] =  list(set(result_br[key]["result_turn_5"+type_cirle]) - set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_5"+type_cirle].sort()
+    result_br[key]["clean_turn_6"+type_cirle] =  list(set(result_br[key]["result_turn_6"+type_cirle]) - set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_6"+type_cirle].sort()
+    result_br[key]["clean_turn_7"+type_cirle] =  list(set(result_br[key]["result_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_7"+type_cirle].sort()
     return result_br
 
 
@@ -62,24 +86,39 @@ while i < 20:
 result = {}
 print("calculating circle")
 for key1 in positions.keys():
+    result_br[key1] = {}
     size_grid = 20
     i = 0
     j = size_grid/5
     count = 1
-    result_br[key1] = {}
+    type_cirle="_not_equal"
     while i < size_grid:
-            result,positions2 = calculate_outside_circle(positions[key1][0],positions[key1][1],size_grid-i,positions,key1)
-            result_br[key1]["result_turn_"+str(count)] = result
+            result,positions2 = calculate_outside_circle_not_equal(positions[key1][0],positions[key1][1],size_grid-i,positions,key1)
+            result_br[key1]["result_turn_"+str(count)+type_cirle] = result
             i = i+j
             print("turn : "+str(count))
             count += 1
-    result,positions2 = calculate_outside_circle(positions[key1][0],positions[key1][1],2,positions,key1)
-    result_br[key1]["result_turn_6"] = result
-    result,positions2 = calculate_outside_circle(positions[key1][0],positions[key1][1],1,positions,key1)
-    result_br[key1]["result_turn_7"] = result
-
+    result,positions2 = calculate_outside_circle_not_equal(positions[key1][0],positions[key1][1],2,positions,key1)
+    result_br[key1]["result_turn_6"+type_cirle] = result
+    result,positions2 = calculate_outside_circle_not_equal(positions[key1][0],positions[key1][1],1,positions,key1)
+    result_br[key1]["result_turn_7"+type_cirle] = result
+    #equal
+    i = 0
+    j = size_grid/5
+    count = 1
+    type_cirle="_equal"
+    while i < size_grid:
+            result,positions2 = calculate_outside_circle_equal(positions[key1][0],positions[key1][1],size_grid-i,positions,key1)
+            result_br[key1]["result_turn_"+str(count)+type_cirle] = result
+            i = i+j
+            print("turn : "+str(count))
+            count += 1
+    result,positions2 = calculate_outside_circle_equal(positions[key1][0],positions[key1][1],2,positions,key1)
+    result_br[key1]["result_turn_6"+type_cirle] = result
+    result,positions2 = calculate_outside_circle_equal(positions[key1][0],positions[key1][1],1,positions,key1)
+    result_br[key1]["result_turn_7"+type_cirle] = result
     count = 0   
-    result_br = clean_turn(result_br,key1)    
+    result_br = clean_turn(result_br,key1,type_cirle)    
     with open('../result/result_br_not_touch_'+key1+'.json', 'w') as fp:
         json.dump(result_br, fp)
     joblib.dump(result_br, '../result/result_br_not_touch'+key1+'.pkl')
