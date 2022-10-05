@@ -102,6 +102,7 @@ for key1 in positions.keys():
     result_br[key1]["result_turn_6"+type_cirle] = result
     result,positions2 = calculate_outside_circle_not_equal(positions[key1][0],positions[key1][1],1,positions,key1)
     result_br[key1]["result_turn_7"+type_cirle] = result
+    result_br = clean_turn(result_br,key1,type_cirle) 
     #equal
     i = 0
     j = size_grid/5
@@ -119,9 +120,9 @@ for key1 in positions.keys():
     result_br[key1]["result_turn_7"+type_cirle] = result
     count = 0   
     result_br = clean_turn(result_br,key1,type_cirle)    
-    with open('../result/result_br_not_touch_'+key1+'.json', 'w') as fp:
+    with open('../result/result_br_'+key1+'.json', 'w') as fp:
         json.dump(result_br, fp)
-    joblib.dump(result_br, '../result/result_br_not_touch'+key1+'.pkl')
+    joblib.dump(result_br, '../result/result_br_'+key1+'.pkl')
     result_br = {}
 
 
