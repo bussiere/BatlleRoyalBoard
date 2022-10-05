@@ -11,6 +11,7 @@ cleo==1.0.0a5
 colorama==0.4.5
 crashtest==0.3.1
 cssselect2==0.7.0
+Cython==0.29.32
 defusedxml==0.7.1
 distlib==0.3.6
 Django==4.1.1
@@ -20,11 +21,13 @@ fpdf==1.7.2
 html5lib==1.1
 idna==3.4
 jaraco.classes==3.2.3
+joblib==1.2.0
 jsonschema==4.16.0
 keyring==23.9.3
 lockfile==0.12.2
 more-itertools==8.14.0
 msgpack==1.0.4
+numpy==1.23.3
 packaging==21.3
 pexpect==4.8.0
 Pillow==9.2.0
@@ -44,10 +47,14 @@ pywin32-ctypes==0.2.0
 qrcode==7.3.1
 requests==2.28.1
 requests-toolbelt==0.9.1
+scikit-learn==1.1.2
+scipy==1.9.1
 shellingham==1.5.0
 six==1.16.0
+sklearn==0.0
 sqlparse==0.4.2
 svgwrite==1.4.3
+threadpoolctl==3.1.0
 tinycss2==1.1.1
 tomlkit==0.11.5
 tzdata==2022.2
