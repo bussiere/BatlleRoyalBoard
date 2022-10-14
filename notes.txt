@@ -58,3 +58,8 @@ gabarit avec X couleurs + chiffres. +des. Si deja tiré mettre 5 jetons sur la  
 
 Les pions de battle royal servent aussi a bouger et de point de vie si tu tapes sur quelqu un tu lui enleves la possibilité de bouger :p et tu peux depenser autant de point que tu veux chaque tour ...
 
+[05/10 à 11:32] bussiere: fouiller maison sans passer son tour 1 jeton, fouiller a fond sans passer 2 tours 2 jetons.
+[05/10 à 11:32] bussiere: 1 mouvement = 1 jeton
+
+
+Table de dés evolutive selon le tour de jeu, au debut plus de chances de tomber sur des maisons.

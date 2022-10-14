@@ -44,6 +44,8 @@ def calculate_outside_circle_not_equal(circle_x,circle_y,circle_r,positions,key1
 
 
 def clean_turn(result_br,key,type_cirle="_not_equal"):
+    result_br[key]["clean_turn_1"+type_cirle] = list(set(result_br[key]["result_turn_1"+type_cirle]))
+    result_br[key]["clean_turn_1"+type_cirle].sort()
     result_br[key]["clean_turn_2"+type_cirle] = list(set(result_br[key]["result_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
     result_br[key]["clean_turn_2"+type_cirle].sort()
     result_br[key]["clean_turn_3"+type_cirle] = list(set(result_br[key]["result_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
@@ -119,10 +121,11 @@ for key1 in positions.keys():
     result,positions2 = calculate_outside_circle_equal(positions[key1][0],positions[key1][1],1,positions,key1)
     result_br[key1]["result_turn_7"+type_cirle] = result
     count = 0   
-    result_br = clean_turn(result_br,key1,type_cirle)    
-    with open('../result/result_br_'+key1+'.json', 'w') as fp:
+    result_br = clean_turn(result_br,key1,type_cirle) 
+    path_result ="C:/Workspace/CustomBoardgame/BatlleRoyalBoard/result/"   
+    with open(path_result+'result_br_'+key1+'.json', 'w') as fp:
         json.dump(result_br, fp)
-    joblib.dump(result_br, '../result/result_br_'+key1+'.pkl')
+    joblib.dump(result_br, path_result+'result_br_'+key1+'.pkl')
     result_br = {}
 
 
