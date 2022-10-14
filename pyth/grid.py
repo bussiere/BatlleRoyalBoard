@@ -46,7 +46,7 @@ def writeAbsOrd(dwg,size,center,nb_case):
     i = 0
     while i < nb_case:
         dwg.add(dwg.text(alphabet_array[i],
-                                       insert = (base_x+decal+unit*i, base_y+(decal)),
+                                       insert = (base_x+decal+unit*i, base_y-(decal)),
                                        fill = "rgb(0,0,0)",stroke_width=3,font_size=32))
         dwg.add(dwg.text(numeric_array[i],
                                        insert = (base_x-unit, base_y+unit/1.4+unit*i),
