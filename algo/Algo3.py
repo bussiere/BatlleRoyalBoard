@@ -128,4 +128,5 @@ for key1 in positions.keys():
     joblib.dump(result_br, path_result+'result_br_'+key1+'.pkl')
     result_br = {}
 
-
+with open('pos.json', 'w') as fp:
+    json.dump(positions, fp)
