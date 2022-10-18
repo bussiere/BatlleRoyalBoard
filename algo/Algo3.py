@@ -58,6 +58,18 @@ def clean_turn(result_br,key,type_cirle="_not_equal"):
     result_br[key]["clean_turn_6"+type_cirle].sort()
     result_br[key]["clean_turn_7"+type_cirle] =  list(set(result_br[key]["result_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
     result_br[key]["clean_turn_7"+type_cirle].sort()
+    # result_br[key]["clean_turn_8"+type_cirle] =  list(set(result_br[key]["result_turn_8"+type_cirle])- set(result_br[key]["clean_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    # result_br[key]["clean_turn_8"+type_cirle].sort()
+    # result_br[key]["clean_turn_9"+type_cirle] =  list(set(result_br[key]["result_turn_9"+type_cirle])- set(result_br[key]["clean_turn_8"+type_cirle]) - set(result_br[key]["clean_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    # result_br[key]["clean_turn_9"+type_cirle].sort()
+    # result_br[key]["clean_turn_10"+type_cirle] =  list(set(result_br[key]["result_turn_10"+type_cirle])-  set(result_br[key]["clean_turn_9"+type_cirle]) -set(result_br[key]["clean_turn_8"+type_cirle]) - set(result_br[key]["clean_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    # result_br[key]["clean_turn_10"+type_cirle].sort()
+    # result_br[key]["clean_turn_11"+type_cirle] =  list(set(result_br[key]["result_turn_11"+type_cirle])-  set(result_br[key]["clean_turn_10"+type_cirle])-set(result_br[key]["clean_turn_9"+type_cirle]) -set(result_br[key]["clean_turn_8"+type_cirle]) - set(result_br[key]["clean_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    # result_br[key]["clean_turn_11"+type_cirle].sort()
+    # result_br[key]["clean_turn_12"+type_cirle] =  list(set(result_br[key]["result_turn_12"+type_cirle])-  set(result_br[key]["clean_turn_11"+type_cirle])  -  set(result_br[key]["clean_turn_10"+type_cirle])-set(result_br[key]["clean_turn_9"+type_cirle]) -set(result_br[key]["clean_turn_8"+type_cirle]) - set(result_br[key]["clean_turn_7"+type_cirle]) - set(result_br[key]["clean_turn_6"+type_cirle])- set(result_br[key]["clean_turn_5"+type_cirle])- set(result_br[key]["clean_turn_4"+type_cirle])-set(result_br[key]["clean_turn_3"+type_cirle])-set(result_br[key]["clean_turn_2"+type_cirle])-set(result_br[key]["result_turn_1"+type_cirle]))
+    # result_br[key]["clean_turn_12"+type_cirle].sort()
+
+
     return result_br
 
 
