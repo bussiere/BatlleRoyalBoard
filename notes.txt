@@ -63,3 +63,5 @@ Les pions de battle royal servent aussi a bouger et de point de vie si tu tapes 
 
 
 Table de dés evolutive selon le tour de jeu, au debut plus de chances de tomber sur des maisons.
+
+Si l'on tue un joueur on recupere ses pions et son equipement.
