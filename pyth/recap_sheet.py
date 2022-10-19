@@ -313,6 +313,6 @@ pdf.multi_cell(0, 3, "Inspect Longuely : Roll two times on the Item Building tab
 pdf.set_xy(2, 290)
 pdf.set_font("Firacode", "", 5)
 pdf.image(target_img, x=8, y=290,  w=3, h=3)
-pdf.multi_cell(0, 3, "Each     Turn , roll 2D20 (one for Letter other for Number) to determine where the center of the cloud move, after Turn 14 roll 2D10")
+pdf.multi_cell(0, 3, "Each     Turn , roll 2D20 (one for Letter other for Number) to determine where the center of the cloud move, after Turn 14 roll 2D10\n,starting with the leftest Letter and Number outside the cloud.")
 
 pdf.output("../assets/print/recap_sheet.pdf", "F")
