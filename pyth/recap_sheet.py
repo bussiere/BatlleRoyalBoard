@@ -60,8 +60,8 @@ pdf.set_xy(131, 5)
 pdf.multi_cell(0, 7, codes, 0, "L")
 pdf.set_xy(131, 8)
 pdf.multi_cell(0, 7, codes2, 0, "L")
-pdf.image(grid_image+".png", x=1, y=1,  w=120, h=120)
-pdf.image(grid_image+".png", x=1, y=118,  w=120, h=120)
+pdf.image(grid_image+".png", x=1, y=0.5,  w=120, h=120)
+pdf.image(grid_image+".png", x=1, y=116,  w=120, h=120)
 pdf.set_xy(125, 15)
 pdf.set_font("Firacode", "", 7)
 pdf.multi_cell(0, 12/2, "       Show the center of next cloud (2d20)", 0, "L")
@@ -80,9 +80,11 @@ pdf.cell(w=10, h = 7, txt = "(30)", border = 0, ln = 0,  align = 'C', fill = Fal
 i = 0
 start_y_cell = 34
 while (i < 26):
-
+    j = i+1
+    if j == 1:
+        j = "Turn "+str(j)
     pdf.set_xy(125, start_y_cell+i*7)
-    pdf.cell(w=20, h = 7, txt = str(i+1), border = 1, ln = 0, 
+    pdf.cell(w=20, h = 7, txt = str(j), border = 1, ln = 0, 
             align = 'R', fill = False, link = '')
     pdf.set_xy(145, start_y_cell+i*7)
     pdf.cell(w=50, h = 7, txt = '', border = 1, ln = 0, 
@@ -103,7 +105,7 @@ heigth_cell = 7
 start_cell_point_y = 218
 start_cell_point_x = 143
 cell_width = 65
-text_life_point = ["Action / Life Point (Start at 30)","1 point = 1 Attack","1 Point = 2 Moves","1 Point = Inspect a Building", "1 Point = Scout a case at 1 distance","0 Point = Scout a case at 1 distance and End Turn","0 Point = Inspect longuely a building and End Turn"]
+text_life_point = ["Action / Life Point (Start at 30)","1 point = 1 Attack","1 Point = 2 Moves","1 Point = Inspect a Building","0 Point = Inspect longuely a building and End Turn", "1 Point = Scout a case at 1 distance","0 Point = Scout a case at 1 distance and End Turn"]
 i = 0
 while i < len(text_life_point):
     pdf.set_xy(start_cell_point_x, start_cell_point_y+i*heigth_cell)
@@ -122,6 +124,11 @@ pdf.image(range_2, x=175, y=270,  w=25, h=25)
 pdf.set_font("Firacode", "", 5)
 # Buildind roll
 #turn 1-2 on 1D6 : Residence,Manor, House,Shop,Casern
+pdf.set_xy(15, 237)
+pdf.set_font("Firacode", "", 5)
+pdf.multi_cell(0, 3, "Turn Building Table")
+pdf.set_xy(87, 237)
+pdf.multi_cell(0, 3, "Item Building Table")
 turn1_2_building = ["Turn 1-12","Residence","Manor","House","Shop","Casern","Nothing"]
 i = 0
 start_x = 2
@@ -302,11 +309,10 @@ pdf.set_xy(2, 265)
 w_cell = 64
 h_cell =1
 pdf.set_font("Firacode", "", 5)
-pdf.multi_cell(0, 3, "Inspect Longuely : Roll two times on the Building table, only one time \nper building on the map\nScout : Determine a case at +1 and roll on the corresponding turn building table,\nplace the building on the map,other player must tell you if they are there.\nInspect a building: You roll on the corresponding building table. \nYou can roll only one time per building on the map.\nAttack : Attack on a case you can reach (by default 0-1 range,1 damage),\nWeapon modify the range and the damage.")
+pdf.multi_cell(0, 3, "Inspect Longuely : Roll two times on the Item Building table, only one time \nper building on the map\nScout : Determine a case at +1 and roll on the corresponding Turn Building Table,\nplace the building on the map,other player must tell you if they are there.\nInspect a building: You roll on the corresponding Item Building Table. \nYou can roll only one time per building on the map.\nAttack : Attack on a case you can reach (by default 0-1 range,1 damage),\nWeapon modify the range and the damage.")
 pdf.set_xy(2, 290)
-w_cell = 64
-h_cell =1
 pdf.set_font("Firacode", "", 5)
-pdf.multi_cell(0, 3, "Inspect Longuely")
+pdf.image(target_img, x=8, y=290,  w=3, h=3)
+pdf.multi_cell(0, 3, "Each     Turn , roll 2D20 (one for Letter other for Number) to determine where the center of the cloud move, after Turn 14 roll 2D10")
 
 pdf.output("../assets/print/recap_sheet.pdf", "F")
