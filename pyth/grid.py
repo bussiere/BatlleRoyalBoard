@@ -60,16 +60,19 @@ def writeAbsOrd(dwg,size,center,nb_case):
         i+=1
     return dwg
 
-def draw_cross(dwg,size_grid,center_grid,nb_case_grid,list_pos,color="rgb(0,0,0)",cross="X"):
+def draw_cross(dwg,size_grid,center_grid,nb_case_grid,list_pos,color="rgb(0,0,0)",cross="X",size_font1=64,size_font2=32):
     base_x = center_grid[0]-(size_grid[0]/2)
     base_y = center_grid[1]-(size_grid[1]/2)
     unit = size_grid[0]/nb_case_grid
+    korean_figure = 0
     if cross =="12":
         cross = "11"
+    if cross == "웃":
+        korean_figure = 2
     for pos in list_pos:
         if len(cross) == 1:
-            dwg.add(dwg.text(cross,insert = (base_x+pos[0]*unit, base_y+unit+pos[1]*unit),fill =color,stroke_width=2,font_size=64))
+            dwg.add(dwg.text(cross,insert = (base_x+pos[0]*unit, base_y+(unit+pos[1]*unit)-korean_figure),fill =color,stroke_width=2,font_size=size_font1))
         else:
-            dwg.add(dwg.text(cross,insert = (base_x+pos[0]*unit, base_y+unit+pos[1]*unit),fill =color,stroke_width=2,font_size=48))
+            dwg.add(dwg.text(cross,insert = (base_x+pos[0]*unit, base_y+(unit+pos[1]*unit)-korean_figure),fill =color,stroke_width=2,font_size=size_font2))
     return dwg
 
