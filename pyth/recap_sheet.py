@@ -49,10 +49,13 @@ pdf.set_xy(130, 10)
 pdf.multi_cell(0, 12/2, codes, 0, "L")
 pdf.image(grid_image+".png", x=1, y=1,  w=120, h=120)
 pdf.image(grid_image+".png", x=1, y=122,  w=120, h=120)
-pdf.set_xy(130, 22)
-pdf.cell(w=20, h = 10, txt = '1', border = 1, ln = 0, 
-          align = 'R', fill = False, link = '')
-pdf.set_xy(159, 22)
-pdf.cell(w=55, h = 10, txt = '', border = 1, ln = 0, 
-          align = 'L', fill = False, link = '')
+i = 0
+while (i < 20):
+    pdf.set_xy(130, 22+i*20
+    pdf.cell(w=20, h = 10, txt = '1', border = 1, ln = 0, 
+            align = 'R', fill = False, link = '')
+    pdf.set_xy(159, 22+i*20)
+    pdf.cell(w=55, h = 10, txt = '', border = 1, ln = 0, 
+            align = 'L', fill = False, link = '')
+    i+=20
 pdf.output("../assets/print/recap_sheet.pdf", "F")
