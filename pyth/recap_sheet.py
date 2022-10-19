@@ -64,33 +64,34 @@ pdf.image(grid_image+".png", x=1, y=0.5,  w=120, h=120)
 pdf.image(grid_image+".png", x=1, y=116,  w=120, h=120)
 pdf.set_xy(125, 15)
 pdf.set_font("Firacode", "", 7)
-pdf.multi_cell(0, 12/2, "       Show the center of next cloud (2d20)", 0, "L")
+pdf.multi_cell(0, 12/2, "       Show the center of next cloud (2d20) [1]", 0, "L")
 pdf.set_xy(125, 21)
 pdf.multi_cell(0, 12/2, "       Activate the poison cloud", 0, "L")
 pdf.set_xy(125, 27)
-pdf.multi_cell(0, 12/2, "       Tell where you was at T-2", 0, "L")
+pdf.multi_cell(0, 12/2, "       Tell where you was at Turn-2", 0, "L")
 pdf.image(target_img, x=125, y=15,  w=5, h=5)
 pdf.image(skull_img, x=125, y=21,  w=5, h=5)
 pdf.image(eye_img, x=125, y=27,  w=5, h=5)
-pdf.set_font("Firacode", "", 8)
-pdf.set_xy(195, 20)
-pdf.cell(w=10, h = 14, txt = "L/M P", border = 1, ln = 0,  align = 'C', fill = False, link = '')
-pdf.set_xy(195, 27)
-pdf.cell(w=10, h = 7, txt = "(30)", border = 0, ln = 0,  align = 'C', fill = False, link = '')
+pdf.set_font("Firacode", "", 6)
+pdf.set_xy(193, 20)
+pdf.cell(w=12, h = 14, txt = "A/L#P [2]", border = 1, ln = 0,  align = 'C', fill = False, link = '')
+pdf.set_xy(193, 27)
+pdf.cell(w=12, h = 7, txt = "(30)", border = 0, ln = 0,  align = 'C', fill = False, link = '')
+pdf.set_font("Firacode", "", 6)
 i = 0
 start_y_cell = 34
 while (i < 26):
     j = i+1
     if j == 1:
         j = "Turn "+str(j)
-    pdf.set_xy(125, start_y_cell+i*7)
+    pdf.set_xy(123, start_y_cell+i*7)
     pdf.cell(w=20, h = 7, txt = str(j), border = 1, ln = 0, 
             align = 'R', fill = False, link = '')
-    pdf.set_xy(145, start_y_cell+i*7)
+    pdf.set_xy(143, start_y_cell+i*7)
     pdf.cell(w=50, h = 7, txt = '', border = 1, ln = 0, 
             align = 'L', fill = False, link = '')
-    pdf.set_xy(195, start_y_cell+i*7)
-    pdf.cell(w=10, h = 7, txt = '', border = 1, ln = 0, 
+    pdf.set_xy(193, start_y_cell+i*7)
+    pdf.cell(w=12, h = 7, txt = '', border = 1, ln = 0, 
             align = 'L', fill = False, link = '')
     if i+1 in [2,5,8,11,14,17,20,23]:
         pdf.image(target_img, x=127, y=start_y_cell+1+i*7,  w=4, h=4)
@@ -105,7 +106,7 @@ heigth_cell = 7
 start_cell_point_y = 218
 start_cell_point_x = 143
 cell_width = 65
-text_life_point = ["Action / Life Point (Start at 30)","1 point = 1 Attack","1 Point = 2 Moves","1 Point = Inspect a Building","0 Point = Inspect longuely a building and End Turn", "1 Point = Scout a case at 1 distance","0 Point = Scout a case at 1 distance and End Turn"]
+text_life_point = ["[2] Action / Life Point (A/L#P) (Start at 30)","1 point = 1 Attack","1 Point = 2 Moves","1 Point = Inspect a Building","0 Point = Inspect longuely a building and End Turn", "1 Point = Scout a case at 1 distance","0 Point = Scout a case at 1 distance and End Turn"]
 i = 0
 while i < len(text_life_point):
     pdf.set_xy(start_cell_point_x, start_cell_point_y+i*heigth_cell)
@@ -213,7 +214,7 @@ while i <7:
     i+=1
 
 
-Manor = ["Manor","4 Points","Shotgun","ChainSaw","Nothing","Nothing","Nothing"]
+Manor = ["Manor","4 A/L#P","Shotgun","ChainSaw","Nothing","Nothing","Nothing"]
 i = 0
 start_y_cell = 240
 start_x = start_x+17
@@ -235,7 +236,7 @@ while i <7:
                 align = 'L', fill = False, link = '')
     i+=1
 
-House = ["House","4 Points","Gun","Knuckle","4 Points","Nothing","Nothing"]
+House = ["House","4 A/L#P","Gun","Knuckle","4 A/L#P","Nothing","Nothing"]
 i = 0
 start_y_cell = 240
 start_x = start_x+17
@@ -258,7 +259,7 @@ while i <7:
     i+=1
 
 
-Shop = ["Shop","4 Points","Gun","Gun","4 Points","Binocular","Nothing"]
+Shop = ["Shop","4 A/L#P","Gun","Gun","4 A/L#P","Binocular","Nothing"]
 i = 0
 start_y_cell = 240
 start_x = start_x+17
@@ -280,7 +281,7 @@ while i <7:
                 align = 'L', fill = False, link = '')
     i+=1
 
-Casern = ["Casern","4 Points","Shotgun","Gun","BowieKnife","Binocular","Nothing"]
+Casern = ["Casern","4 A/L#P","Shotgun","Gun","BowieKnife","Binocular","Nothing"]
 i = 0
 start_y_cell = 240
 start_x = start_x+17
@@ -305,14 +306,14 @@ while i <7:
 
 pdf.set_xy(100, 263)
 pdf.multi_cell(0, 3, "Gun : Range 2 ; Damage  2\nShotGun : Range 2 ; Damage  4\nChainSaw : Range 1 ; Damage  4\nBowieKnife : Range 1 ; Damage  3\nKnuckle : Range 1 ; Damage  2\nBinocular : Scout at 1-2 \nNothing: Range 1; Damage 1")
-pdf.set_xy(2, 265)
+pdf.set_xy(2, 263)
 w_cell = 64
 h_cell =1
 pdf.set_font("Firacode", "", 5)
 pdf.multi_cell(0, 3, "Inspect Longuely : Roll two times on the Item Building table, only one time \nper building on the map\nScout : Determine a case at +1 and roll on the corresponding Turn Building Table,\nplace the building on the map,other player must tell you if they are there.\nInspect a building: You roll on the corresponding Item Building Table. \nYou can roll only one time per building on the map.\nAttack : Attack on a case you can reach (by default 0-1 range,1 damage),\nWeapon modify the range and the damage.")
-pdf.set_xy(2, 290)
+pdf.set_xy(2, 287)
 pdf.set_font("Firacode", "", 5)
-pdf.image(target_img, x=8, y=290,  w=3, h=3)
-pdf.multi_cell(0, 3, "Each     Turn , roll 2D20 (one for Letter other for Number) to determine where the center of the cloud move, after Turn 14 roll 2D10\n,starting with the leftest Letter and Number outside the cloud.")
+pdf.image(target_img, x=12, y=287,  w=3, h=3)
+pdf.multi_cell(0, 3, "[1] Each     Turn , roll 2D20 (one for Letter other for Number) to determine where the center of the cloud move,\nafter Turn 14 roll 2D10,starting with the leftest Letter and Number outside the cloud")
 
 pdf.output("../assets/print/recap_sheet.pdf", "F")
