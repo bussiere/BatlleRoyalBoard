@@ -45,16 +45,16 @@ pdf = FPDF(format="A4",orientation = 'P')
 pdf.add_page()
 pdf.add_font("Firacode", "", "../assets/fira_code/testtfont.ttf", uni=True)
 pdf.set_font("Firacode", "", 8)
-pdf.set_xy(1, 1)
+pdf.set_xy(5, 1)
 #write A1 to T20
 grids = "A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:8,I:9,J:10,K:11,L:12,M:13,N:14,O:15,P:16,Q:17,R:18,S:19,T:20"
-codes = "M=Move,B=begin,E=End,S=Scout,I=Inspect ex: B:A1,M:A3,S:B4,M:B4,I:B4"
+codes = "M=Move,B=begin,E=End,S=Scout,I=Inspect ex: B:A1,M:A3,S:B4,M:B4,I:B4,M:B2,E:B2"
 pdf.multi_cell(0, 12/2, grids, 0, "L")
 pdf.set_font("Firacode", "", 8)
 pdf.set_xy(130, 10)
 pdf.multi_cell(0, 12/2, codes, 0, "L")
 pdf.image(grid_image+".png", x=1, y=1,  w=120, h=120)
-pdf.image(grid_image+".png", x=1, y=122,  w=120, h=120)
+pdf.image(grid_image+".png", x=1, y=118,  w=120, h=120)
 pdf.set_xy(125, 22)
 pdf.set_font("Firacode", "", 7)
 pdf.multi_cell(0, 12/2, "       Show where is the center of next cloud", 0, "L")
@@ -76,7 +76,14 @@ while (i < 26):
     pdf.set_xy(145, start_y_cell+i*7)
     pdf.cell(w=60, h = 7, txt = '', border = 1, ln = 0, 
             align = 'L', fill = False, link = '')
-    if ((i+1)%2==0):
-        pdf.image(target_img, x=125, y=start_y_cell+i*7,  w=4, h=4)
+    if i+1 in [2,5,8,11,14,17,20,23]:
+        pdf.image(target_img, x=127, y=start_y_cell+1+i*7,  w=4, h=4)
+    if i+1 in [3,6,9,12,15,18,21,24]:
+        pdf.image(skull_img, x=127, y=start_y_cell+1+i*7,  w=4, h=4)
+    if i+1 in [3,5,7,9,11,13,15,17,19,21,23,25]:
+        pdf.image(eye_img, x=135, y=start_y_cell+1+i*7,  w=4, h=4)
     i+=1
+
+pdf.set_xy(165, 235)
+pdf.cell(w=40, h = 7, txt = "Action / Life Point", border = 1, ln = 0, align = 'L' )
 pdf.output("../assets/print/recap_sheet.pdf", "F")
