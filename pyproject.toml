@@ -12,6 +12,8 @@ svgwrite = "^1.4.3"
 pyvips = "^2.2.1"
 CairoSVG = "^2.5.2"
 natsort = "^8.2.0"
+svglib = "^1.4.1"
+reportlab = "^3.6.11"
 
 [tool.poetry.dev-dependencies]
 
