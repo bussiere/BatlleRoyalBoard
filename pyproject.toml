@@ -6,6 +6,12 @@ authors = ["bussiere <bussiere@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+fpdf = "^1.7.2"
+Pillow = "^9.2.0"
+svgwrite = "^1.4.3"
+pyvips = "^2.2.1"
+CairoSVG = "^2.5.2"
+natsort = "^8.2.0"
 
 [tool.poetry.dev-dependencies]
 
