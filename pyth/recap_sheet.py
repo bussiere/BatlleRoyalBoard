@@ -9,7 +9,7 @@ from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 
 
-
+img_icon_size=20
 mypath = "../result/"
 path_asset="../assets/blank_grid/"
 path_asset_range="../assets/range_grid/"
@@ -20,10 +20,11 @@ nb_case = 20
 size_x = 1000
 size_y = 1000
 name_case = ""
-grid_image = path_asset+"grid"+str(nb_case)+"_"+name_case
+grid_image = path_asset+"map_grid"+str(nb_case)+"_"+name_case
 dwg = svgwrite.Drawing(grid_image+".svg", profile='full',width=size_x,height=size_y)
 dwg,size,center,begin_x,begin_y,unit_grid_x,unit_grid_y = draw_grid(dwg,nb_case,nb_case,size_x,size_y)
 dwg = writeAbsOrd(dwg,size,center,nb_case)
+dwg = writeCasePos(dwg,size,center,nb_case)
 dwg.save()
 # enum 'VipsInteresting' has no member 'nonee', should be one of: none, centre, entropy, attention, low, high, all
 image2 = pyvips.Image.thumbnail(grid_image+".svg", 1100,crop='high')
@@ -69,9 +70,9 @@ pdf.set_xy(125, 21)
 pdf.multi_cell(0, 12/2, "       Activate the poison cloud", 0, "L")
 pdf.set_xy(125, 27)
 pdf.multi_cell(0, 12/2, "       Tell where you was at Turn-2", 0, "L")
-pdf.image(target_img, x=125, y=15,  w=5, h=5)
-pdf.image(skull_img, x=125, y=21,  w=5, h=5)
-pdf.image(eye_img, x=125, y=27,  w=5, h=5)
+pdf.image(target_img, x=125, y=15,  w=img_icon_size, h=img_icon_size)
+pdf.image(skull_img, x=125, y=21,  w=img_icon_size, h=img_icon_size)
+pdf.image(eye_img, x=125, y=27,  w=img_icon_size, h=img_icon_size)
 pdf.set_font("Firacode", "", 6)
 pdf.set_xy(193, 20)
 pdf.cell(w=12, h = 14, txt = "A/L#P [2]", border = 1, ln = 0,  align = 'C', fill = False, link = '')
@@ -94,11 +95,11 @@ while (i < 26):
     pdf.cell(w=12, h = 7, txt = '', border = 1, ln = 0, 
             align = 'L', fill = False, link = '')
     if i+1 in [2,5,8,11,14,17,20,23]:
-        pdf.image(target_img, x=127, y=start_y_cell+1+i*7,  w=4, h=4)
+        pdf.image(target_img, x=127, y=start_y_cell+1+i*7,  w=img_icon_size, h=img_icon_size)
     if i+1 in [3,6,9,12,15,18,21,24]:
-        pdf.image(skull_img, x=127, y=start_y_cell+1+i*7,  w=4, h=4)
+        pdf.image(skull_img, x=127, y=start_y_cell+1+i*7,  w=img_icon_size, h=img_icon_size)
     if i+1 in [3,5,7,9,11,13,15,17,19,21,23,25]:
-        pdf.image(eye_img, x=135, y=start_y_cell+1+i*7,  w=4, h=4)
+        pdf.image(eye_img, x=134, y=start_y_cell+1+i*7,  w=img_icon_size, h=img_icon_size)
     i+=1
 
 pdf.set_font("Firacode", "", 6)
@@ -313,7 +314,7 @@ pdf.set_font("Firacode", "", 5)
 pdf.multi_cell(0, 3, "Inspect Longuely : Roll two times on the Item Building table, only one time \nper building on the map\nScout : Determine a case at +1 and roll on the corresponding Turn Building Table,\nplace the building on the map,other player must tell you if they are there.\nInspect a building: You roll on the corresponding Item Building Table. \nYou can roll only one time per building on the map.\nAttack : Attack on a case you can reach (by default 0-1 range,1 damage),\nWeapon modify the range and the damage.")
 pdf.set_xy(2, 287)
 pdf.set_font("Firacode", "", 5)
-pdf.image(target_img, x=12, y=287,  w=3, h=3)
-pdf.multi_cell(0, 3, "[1] Each     Turn , roll 2D20 (one for Letter other for Number) to determine where the center of the cloud move,\nafter Turn 14 roll 2D10,starting with the leftest Letter and Number outside the cloud")
+pdf.image(target_img, x=12, y=287,  w=img_icon_size/2, h=img_icon_size/2)
+pdf.multi_cell(0, 3, "[1] Each     Turn , before anyone play, roll 2D20 (one for Letter other for Number) to determine where the center of the cloud will move,\nafter Turn 14 roll 2D10,starting with the leftest Letter and Number outside the cloud")
 
 pdf.output("../assets/print/recap_sheet.pdf", "F")

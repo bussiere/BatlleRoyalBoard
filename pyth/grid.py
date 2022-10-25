@@ -6,7 +6,7 @@ import cairosvg
 from PIL import Image
 import os, sys
 import json
-
+import math
 
 def draw_grid(dwg,size_x,size_y,plan_size_x,plan_size_y):
     begin_x = plan_size_x/10
@@ -31,6 +31,27 @@ def draw_circles(dwg,begin_circle_x,begin_circle_y,begin_rayon,division_circle=1
     while i < division_circle+1:
         dwg.add(dwg.circle((begin_circle_x,begin_circle_y),unit_rayon*i,fill_opacity=0,stroke="black",stroke_width=3))
         i += 1        
+    return dwg
+
+def writeCasePos(dwg,size,center,nb_case):
+    base_x = center[0]-(size[0]/2)
+    base_y = center[1]-(size[1]/2)
+    base_x2 = center[0]+(size[0]/2)
+    base_y2 = center[1]+(size[1]/2)
+    case_size = size[0]/nb_case
+    unit = size[0]/nb_case
+    decal = unit/4
+    alphabet_array = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T"]
+    numeric_array = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+    i = 0
+    for alpha in alphabet_array:
+        j = 0
+        for numeric in numeric_array:
+            dwg.add(dwg.text(alpha+numeric,
+                                           insert = (base_x+case_size*i,  base_y+decal+case_size*j),
+                                           fill = "rgb(0,0,0)",stroke_width=3,font_size=12))
+            j +=1
+        i+=1
     return dwg
 
 
