@@ -47,7 +47,7 @@ eye_img = eye+".png"
 pdf = FPDF(format="A4",orientation = 'P')
 pdf.set_auto_page_break(False, margin = 0.0)
 pdf.add_page()
-pdf.add_font("Firacode", "", "../assets/fira_code/testtfont.ttf", uni=True)
+pdf.add_font("Firacode", "", "../assets/fira_code/FiraCode-VariableFont_wght.ttf", uni=True)
 pdf.set_font("Firacode", "", 8)
 pdf.set_xy(5, 1)
 #write A1 to T20
